@@ -1,0 +1,70 @@
+<!-- <p id="notice"><%= notice %></p>
+
+<h1>Blogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Entry</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.author %></td>
+        <td><%= blog.entry %></td>
+        <td><%= blog.category_id %></td>
+        <td><%= link_to 'Show', blog %></td>
+        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>-->
+
+<div class="container">
+
+<h1>Healthy routines with Wei</h1>
+
+<div class="row">
+	<% @blogs.each do |blog| %>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<%= link_to blog.title, blog %>
+			</div>
+			<div class="panel-body">
+				by <%= link_to blog.author, blog%> <br>
+
+				<p>Uploaded at: <%= blog.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+				<p><%= blog.entry[0..250] %>...<%= link_to "Read More", blog %></p>
+				<p>Category: <%= link_to blog.category_id %></p>
+			</div>
+			<div class="panel-footer">
+
+				<div>
+
+				<%= link_to 'Edit', edit_blog_path(blog), class: "btn btn-warning" %>
+				<%= link_to 'Destroy', blog, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger" %>
+			 </div>
+			 <br>
+		 	<br>
+			</div>
+		</div>
+	</div>
+
+
+<% end %>
+</div>
+
+<br>
+<%= link_to 'New Blog', new_blog_path %>
+</div>
