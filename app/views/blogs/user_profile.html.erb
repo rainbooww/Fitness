@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1><%= @user.username %>'s Page</h1>
+
+  <p><strong>Name:</strong><%= @user.name %></p>
+
+  <p><strong>Brithday:</strong><%= @user.birthday.strftime("%m/%d/%Y") %></p>
+
+  <div class="row">
+    <% @user.blogs.each do |blog| %>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= link_to blog.title, blog %>
+          </div>
+          <div class="panel-body">
+            by <%= blog.user.username %><br>
+            <p>Create at: <%= blog.created_at strftime('%m/%d/%Y at %I:%M%p') %></p>
+            <p><%= blog.blog_entry[0..250] %>...<%= link_to "Read More", blog %></p>
+          </div>
+          <div class="panel-footer">
+            <% link_to 'Edit', edit_blog_path(blog), class: "btn btn-warning" %>
+            <% link_to 'Destroy', blog, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+
+    <div>
+    <%= link_to 'New Blog Post', new_blog_path, class: "btn btn-primary" %>
+    </div>
+
+
+</div>

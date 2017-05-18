@@ -1,3 +1,6 @@
+<div class="container">
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -20,5 +23,8 @@
   <%= @blog.category.name %>
 </p>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
+
+<%= link_to 'Edit', edit_blog_path(@blog) %>
 <%= link_to 'Back', blogs_path %>
+<%= link_to 'New', new_blog_path(@blog) %>
+</div>
